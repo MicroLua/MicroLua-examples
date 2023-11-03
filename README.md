@@ -1,13 +1,12 @@
 # MicroLua examples
 
-This repository contains example programs based on
-[MicroLua](https://github.com/MicroLua/MicroLua) that demonstrate how to use the
-features of the RP2040 from Lua.
+This repository contains example programs for
+[MicroLua](https://github.com/MicroLua/MicroLua).
 
 ## Building
 
 ```shell
-# Configure the locations of the pico-sdk and MicroLua. Adjust to your setup.
+# Configure the locations of the Pico SDK and MicroLua. Adjust to your setup.
 $ export PICO_SDK_PATH="${HOME}/pico-sdk"
 $ export MLUA_PATH="${HOME}/MicroLua"
 
@@ -19,8 +18,9 @@ $ cd MicroLua-examples
 $ cmake -s . -B build -DPICO_BOARD=pico
 $ make -j9 -C build
 
-# Flash the "blink" example to a target with a Picoprobe. Alternatively, start
-# the target in BOOTSEL mode and copy build/blink/mlua_examples_blink.uf2 to its
-# drive.
-$ "${MLUA_PATH}/tools/flash" build/blink/mlua_examples_blink.elf
+# Start the target in BOOTSEL mode and flash the "blink" example with picotool.
+$ picotool load -v -x build/blink/mlua_examples_blink.elf
+
+# Alternatively, start the target in BOOTSEL mode and copy to its boot drive.
+$ cp build/blink/mlua_examples_blink.uf2 /mnt/RPI-RP2/
 ```
