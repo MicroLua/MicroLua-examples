@@ -1,3 +1,6 @@
+# Copyright 2023 Remy Blank <remy@c-space.org>
+# SPDX-License-Identifier: MIT
+
 mlua_add_lua_modules(mlua_examples_adc_onboard_temperature_main
     onboard_temperature_main.lua
 )

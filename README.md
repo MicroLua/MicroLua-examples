@@ -1,5 +1,8 @@
 # MicroLua examples
 
+<!-- Copyright 2023 Remy Blank <remy@c-space.org> -->
+<!-- SPDX-License-Identifier: MIT -->
+
 This repository contains example programs for
 [MicroLua](https://github.com/MicroLua/MicroLua).
 

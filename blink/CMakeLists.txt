@@ -1,3 +1,6 @@
+# Copyright 2023 Remy Blank <remy@c-space.org>
+# SPDX-License-Identifier: MIT
+
 mlua_add_lua_modules(mlua_examples_blink_main main.lua)
 target_link_libraries(mlua_examples_blink_main INTERFACE
     mlua_mod_hardware_gpio
