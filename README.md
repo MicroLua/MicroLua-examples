@@ -9,7 +9,7 @@ This repository contains example programs for
 ## Building
 
 ```shell
-# Configure the locations of the Pico SDK and MicroLua. Adjust to your setup.
+# Configure the locations of the Pico SDK and MicroLua. Adjust for your setup.
 $ export PICO_SDK_PATH="${HOME}/pico-sdk"
 $ export MLUA_PATH="${HOME}/MicroLua"
 
