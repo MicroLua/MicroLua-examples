@@ -4,5 +4,4 @@
 (global _ENV (mlua.Module ...))
 
 (global main (fn []
-    (print "Hello, world!")
-))
+  (print "Hello, world!")))
