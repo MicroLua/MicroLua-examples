@@ -1,7 +1,7 @@
 ; Copyright 2023 Remy Blank <remy@c-space.org>
 ; SPDX-License-Identifier: MIT
 
-(global _ENV (mlua.Module ...))
+(global _ENV (mlua.module ...))
 
 (local gpio (require :hardware.gpio))
 (local pico (require :pico))
