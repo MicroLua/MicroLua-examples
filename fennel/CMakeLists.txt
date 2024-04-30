@@ -5,9 +5,9 @@ mlua_add_fnl_modules(mlua_examples_fennel_blink_main
     blink_main.fnl
 )
 target_link_libraries(mlua_examples_fennel_blink_main INTERFACE
-    mlua_mod_hardware_gpio
+    mlua_mod_hardware.gpio
     mlua_mod_pico
-    mlua_mod_pico_time
+    mlua_mod_pico.time
 )
 
 add_executable(mlua_examples_fennel_blink)
@@ -24,7 +24,7 @@ mlua_add_fnl_modules(mlua_examples_fennel_hello_main
     hello_main.fnl
 )
 target_link_libraries(mlua_examples_fennel_hello_main INTERFACE
-    mlua_mod_mlua_stdio
+    mlua_mod_mlua.stdio
 )
 
 add_executable(mlua_examples_fennel_hello)

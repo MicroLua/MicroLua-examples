@@ -18,11 +18,11 @@ $ git clone https://github.com/MicroLua/MicroLua-examples.git
 $ cd MicroLua-examples
 
 # Build all examples.
-$ cmake -s . -B build -DPICO_BOARD=pico
-$ make -j9 -C build
+$ cmake -B build -DPICO_BOARD=pico
+$ cmake --build build --parallel=9
 
 # Start the target in BOOTSEL mode and flash the "blink" example with picotool.
-$ picotool load -v -x build/blink/mlua_examples_blink.elf
+$ picotool load -u -x build/blink/mlua_examples_blink.elf
 
 # Alternatively, start the target in BOOTSEL mode and copy to its boot drive.
 $ cp build/blink/mlua_examples_blink.uf2 /mnt/RPI-RP2/
