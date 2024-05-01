@@ -13,6 +13,7 @@ mlua_init()
 
 add_subdirectory(adc)
 add_subdirectory(blink)
+add_subdirectory(pico_w)
 mlua_fennel_version(fennel_version)
 if(NOT "${fennel_version}" STREQUAL "")
     add_subdirectory(fennel)
