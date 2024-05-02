@@ -5,25 +5,25 @@ _ENV = module(...)
 
 local adc = require 'hardware.adc'
 local gpio = require 'hardware.gpio'
-local thread = require 'mlua.thread'
 local pico = require 'pico'
 local string = require 'string'
 
 local TEMPERATURE_UNIT = "C"
 local conv = 3.3 / (1 << 12)
 
-local function onboard_temperature(value, unit)
-    local temp = 27.0 - (value * conv - 0.706) / 0.001721
+local function read_onboard_temperature(unit)
+    local value = adc.fifo_get_blocking() * conv
+    local temp = 27.0 - (value - 0.706) / 0.001721
     if unit == "F" then temp = temp * 9 / 5 + 32 end
     return temp
 end
 
 function main()
     -- Set up the LED pin.
-    local LED_PIN = pico.DEFAULT_LED_PIN
-    if LED_PIN then
-        gpio.init(LED_PIN)
-        gpio.set_dir(LED_PIN, gpio.OUT)
+    local led_pin = pico.DEFAULT_LED_PIN
+    if led_pin then
+        gpio.init(led_pin)
+        gpio.set_dir(led_pin, gpio.OUT)
     end
 
     -- Configure the ADC.
@@ -39,14 +39,13 @@ function main()
     -- Read from the ADC FIFO.
     local cnt = 0
     while true do
-        local value = adc.fifo_get_blocking()
+        local temp = read_onboard_temperature(TEMPERATURE_UNIT)
         cnt = cnt + 1
-        if cnt == 1000 then
-            cnt = 0
-            local temp = onboard_temperature(value, TEMPERATURE_UNIT)
-            print(("Onboard temperature = %.2f %s"):format(
-                temp, TEMPERATURE_UNIT))
-            if LED_PIN then gpio.xor_mask(1 << LED_PIN) end
-        end
+        if cnt < 1000 then goto continue end
+        cnt = 0
+        print(("Onboard temperature = %.2f %s"):format(
+            temp, TEMPERATURE_UNIT))
+        if led_pin then gpio.xor_mask(1 << led_pin) end
+        ::continue::
     end
 end

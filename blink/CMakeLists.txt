@@ -1,16 +1,19 @@
 # Copyright 2023 Remy Blank <remy@c-space.org>
 # SPDX-License-Identifier: MIT
 
-mlua_add_lua_modules(mlua_examples_blink_main main.lua)
-target_link_libraries(mlua_examples_blink_main INTERFACE
+mlua_add_lua_modules(mod_blink blink.lua)
+target_link_libraries(mod_blink INTERFACE
     mlua_mod_hardware.gpio
     mlua_mod_pico
     mlua_mod_pico.time
 )
 
-add_executable(mlua_examples_blink)
-target_link_libraries(mlua_examples_blink PRIVATE
-    mlua_examples_blink_main
+add_executable(blink)
+target_compile_definitions(blink PRIVATE
+    MLUA_MAIN_MODULE=blink
+)
+target_link_libraries(blink PRIVATE
+    mod_blink
     pico_stdlib
 )
-pico_add_extra_outputs(mlua_examples_blink)
+pico_add_extra_outputs(blink)

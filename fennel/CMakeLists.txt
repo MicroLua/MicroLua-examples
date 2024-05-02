@@ -1,38 +1,10 @@
 # Copyright 2023 Remy Blank <remy@c-space.org>
 # SPDX-License-Identifier: MIT
 
-mlua_add_fnl_modules(mlua_examples_fennel_blink_main
-    blink_main.fnl
-)
-target_link_libraries(mlua_examples_fennel_blink_main INTERFACE
-    mlua_mod_hardware.gpio
-    mlua_mod_pico
-    mlua_mod_pico.time
-)
-
-add_executable(mlua_examples_fennel_blink)
-target_compile_definitions(mlua_examples_fennel_blink PRIVATE
-    MLUA_MAIN_MODULE=blink_main
-)
-target_link_libraries(mlua_examples_fennel_blink PRIVATE
-    mlua_examples_fennel_blink_main
-    pico_stdlib
-)
-pico_add_extra_outputs(mlua_examples_fennel_blink)
-
-mlua_add_fnl_modules(mlua_examples_fennel_hello_main
-    hello_main.fnl
-)
-target_link_libraries(mlua_examples_fennel_hello_main INTERFACE
-    mlua_mod_mlua.stdio
-)
-
-add_executable(mlua_examples_fennel_hello)
-target_compile_definitions(mlua_examples_fennel_hello PRIVATE
-    MLUA_MAIN_MODULE=hello_main
-)
-target_link_libraries(mlua_examples_fennel_hello PRIVATE
-    mlua_examples_fennel_hello_main
-    pico_stdlib
-)
-pico_add_extra_outputs(mlua_examples_fennel_hello)
+mlua_fennel_version(fennel_version)
+if("${fennel_version}" STREQUAL "")
+    message("Fennel compiler not found, skipping fennel/")
+else()
+    add_subdirectory(blink)
+    add_subdirectory(hello_world)
+endif()

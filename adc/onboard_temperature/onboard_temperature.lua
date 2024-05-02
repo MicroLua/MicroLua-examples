@@ -21,10 +21,10 @@ end
 
 function main()
     -- Set up the LED pin.
-    local LED_PIN = pico.DEFAULT_LED_PIN
-    if LED_PIN then
-        gpio.init(LED_PIN)
-        gpio.set_dir(LED_PIN, gpio.OUT)
+    local led_pin = pico.DEFAULT_LED_PIN
+    if led_pin then
+        gpio.init(led_pin)
+        gpio.set_dir(led_pin, gpio.OUT)
     end
 
     -- Configure the ADC.
@@ -37,10 +37,10 @@ function main()
         local temp = read_onboard_temperature(TEMPERATURE_UNIT)
         print(("Onboard temperature = %.2f %s"):format(
             temp, TEMPERATURE_UNIT))
-        if LED_PIN then
-            gpio.put(LED_PIN, 1)
+        if led_pin then
+            gpio.put(led_pin, 1)
             time.sleep_ms(10)
-            gpio.put(LED_PIN, 0)
+            gpio.put(led_pin, 0)
         end
         time.sleep_ms(990)
     end
