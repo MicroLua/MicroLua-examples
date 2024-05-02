@@ -22,8 +22,8 @@ $ cmake -B build -DPICO_BOARD=pico
 $ cmake --build build --parallel=9
 
 # Start the target in BOOTSEL mode and flash the "blink" example with picotool.
-$ picotool load -u -x build/blink/mlua_examples_blink.elf
+$ picotool load -u -x build/blink/blink.elf
 
 # Alternatively, start the target in BOOTSEL mode and copy to its boot drive.
-$ cp build/blink/mlua_examples_blink.uf2 /mnt/RPI-RP2/
+$ cp build/blink/blink.uf2 /mnt/RPI-RP2/
 ```
