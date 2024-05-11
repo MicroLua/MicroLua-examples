@@ -8,7 +8,7 @@ target_link_libraries(mod_picow_blink INTERFACE
     mlua_mod_pico.time
 )
 
-add_executable(picow_blink)
+mlua_add_executable(picow_blink)
 target_compile_definitions(picow_blink PRIVATE
     MLUA_MAIN_MODULE=picow_blink
     MLUA_STDIO_INIT_USB=1
@@ -21,4 +21,3 @@ target_link_libraries(picow_blink PRIVATE
     mlua_mod_pico.stdio.usb
     pico_stdlib
 )
-pico_add_extra_outputs(picow_blink)

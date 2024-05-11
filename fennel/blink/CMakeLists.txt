@@ -8,7 +8,7 @@ target_link_libraries(mod_fennel_blink INTERFACE
     mlua_mod_pico.time
 )
 
-add_executable(fennel_blink)
+mlua_add_executable(fennel_blink)
 target_compile_definitions(fennel_blink PRIVATE
     MLUA_MAIN_MODULE=blink
     MLUA_STDIO_INIT_USB=1
@@ -21,4 +21,3 @@ target_link_libraries(fennel_blink PRIVATE
     mod_fennel_blink
     pico_stdlib
 )
-pico_add_extra_outputs(fennel_blink)

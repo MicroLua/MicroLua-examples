@@ -10,7 +10,7 @@ target_link_libraries(mod_adc_onboard_temperature INTERFACE
     mlua_mod_string
 )
 
-add_executable(onboard_temperature)
+mlua_add_executable(onboard_temperature)
 target_compile_definitions(onboard_temperature PRIVATE
     MLUA_MAIN_MODULE=onboard_temperature
     MLUA_STDIO_INIT_USB=1
@@ -23,7 +23,6 @@ target_link_libraries(onboard_temperature PRIVATE
     mod_adc_onboard_temperature
     pico_stdlib
 )
-pico_add_extra_outputs(onboard_temperature)
 
 
 mlua_add_lua_modules(mod_adc_onboard_temperature_irq
@@ -36,7 +35,7 @@ target_link_libraries(mod_adc_onboard_temperature_irq INTERFACE
     mlua_mod_string
 )
 
-add_executable(onboard_temperature_irq)
+mlua_add_executable(onboard_temperature_irq)
 target_compile_definitions(onboard_temperature_irq PRIVATE
     MLUA_MAIN_MODULE=onboard_temperature_irq
     MLUA_STDIO_INIT_USB=1
@@ -50,4 +49,3 @@ target_link_libraries(onboard_temperature_irq PRIVATE
     mod_adc_onboard_temperature_irq
     pico_stdlib
 )
-pico_add_extra_outputs(onboard_temperature_irq)

@@ -3,8 +3,8 @@
 
 _ENV = module(...)
 
-local cyw43 = require 'pico.cyw43'
 local pico = require 'pico'
+local cyw43 = require 'pico.cyw43'
 local time = require 'pico.time'
 
 function main()

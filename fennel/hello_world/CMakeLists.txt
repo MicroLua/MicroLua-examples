@@ -6,7 +6,7 @@ target_link_libraries(mod_fennel_hello_world INTERFACE
     mlua_mod_pico.time
 )
 
-add_executable(fennel_hello_world)
+mlua_add_executable(fennel_hello_world)
 target_compile_definitions(fennel_hello_world PRIVATE
     MLUA_MAIN_MODULE=hello_world
     MLUA_STDIO_INIT_USB=1
@@ -19,4 +19,3 @@ target_link_libraries(fennel_hello_world PRIVATE
     mod_fennel_hello_world
     pico_stdlib
 )
-pico_add_extra_outputs(fennel_hello_world)
