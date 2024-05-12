@@ -11,6 +11,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 mlua_init()
 
+add_compile_definitions(
+    MLUA_LOG_MAIN_ERRORS=1
+)
+
 add_subdirectory(adc)
 add_subdirectory(blink)
 add_subdirectory(fennel)
