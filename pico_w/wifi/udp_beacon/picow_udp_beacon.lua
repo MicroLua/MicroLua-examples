@@ -8,6 +8,7 @@ local io = require 'mlua.io'
 local mem = require 'mlua.mem'
 local pico = require 'pico'
 local cyw43 = require 'pico.cyw43'
+local util = require 'pico.cyw43.util'
 local wifi = require 'pico.cyw43.wifi'
 local lwip = require 'pico.lwip'
 local pbuf = require 'pico.lwip.pbuf'
@@ -40,28 +41,6 @@ local function run_udp_beacon()
     end
 end
 
-local function connect(ssid, password, auth, timeout)
-    local deadline = time.make_timeout_time_ms(timeout)
-    local status = cyw43.LINK_NONET
-    while true do
-        if status == cyw43.LINK_NONET then
-            local ok, err = wifi.join(ssid, password, auth)
-            if not ok then return ok, pico.error_str(err) end
-        end
-        local st = cyw43.tcpip_link_status(cyw43.ITF_STA)
-        if st ~= status then
-            io.printf("Link status: %s\n", cyw43.link_status_str(st))
-        end
-        status = st
-        if status == cyw43.LINK_UP then return true
-        elseif status < 0 then return false, cyw43.link_status_str(status)
-        elseif time.get_absolute_time_int() - deadline > 0 then
-            return false, "connection timed out"
-        end
-        time.sleep_ms(500)
-    end
-end
-
 function main()
     if not (cyw43.init() and lwip.init()) then
         io.printf("failed to initialize\n")
@@ -71,8 +50,8 @@ function main()
     wifi.set_up(cyw43.ITF_STA, true, cyw43.COUNTRY_WORLDWIDE)
 
     io.printf("Connecting to Wi-Fi...\n")
-    local ok, msg = connect(config.WIFI_SSID, config.WIFI_PASSWORD,
-                            cyw43.AUTH_WPA2_AES_PSK, 30000)
+    local ok, msg = util.wifi_connect(config.WIFI_SSID, config.WIFI_PASSWORD,
+                                      cyw43.AUTH_WPA2_AES_PSK, 30000)
     if not ok then
         io.printf("failed to connect: %s\n", msg)
         return 1

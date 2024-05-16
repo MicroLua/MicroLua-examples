@@ -7,6 +7,7 @@ target_link_libraries(mod_picow_udp_beacon INTERFACE
     mlua_mod_mlua.mem
     mlua_mod_pico
     mlua_mod_pico.cyw43
+    mlua_mod_pico.cyw43.util
     mlua_mod_pico.cyw43.wifi
     mlua_mod_pico.lwip
     mlua_mod_pico.lwip.pbuf
