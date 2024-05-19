@@ -5,8 +5,8 @@ mlua_add_lua_modules(mod_adc_onboard_temperature onboard_temperature.lua)
 target_link_libraries(mod_adc_onboard_temperature INTERFACE
     mlua_mod_hardware.adc
     mlua_mod_hardware.gpio
+    mlua_mod_mlua.time
     mlua_mod_pico
-    mlua_mod_pico.time
     mlua_mod_string
 )
 

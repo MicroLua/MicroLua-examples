@@ -3,9 +3,9 @@
 
 _ENV = module(...)
 
+local time = require 'mlua.time'
 local pico = require 'pico'
 local cyw43 = require 'pico.cyw43'
-local time = require 'pico.time'
 
 function main()
     if not cyw43.init() then
@@ -15,8 +15,8 @@ function main()
     local pin = pico.CYW43_WL_GPIO_LED_PIN
     while true do
         cyw43.gpio_set(pin, 1)
-        time.sleep_ms(250)
+        time.sleep_for(250 * time.msec)
         cyw43.gpio_set(pin, 0)
-        time.sleep_ms(250)
+        time.sleep_for(250 * time.msec)
     end
 end

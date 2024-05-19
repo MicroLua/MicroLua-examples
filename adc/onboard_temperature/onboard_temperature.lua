@@ -5,8 +5,8 @@ _ENV = module(...)
 
 local adc = require 'hardware.adc'
 local gpio = require 'hardware.gpio'
+local time = require 'mlua.time'
 local pico = require 'pico'
-local time = require 'pico.time'
 local string = require 'string'
 
 local TEMPERATURE_UNIT = "C"
@@ -39,9 +39,9 @@ function main()
             temp, TEMPERATURE_UNIT))
         if led_pin then
             gpio.put(led_pin, 1)
-            time.sleep_ms(10)
+            time.sleep_for(10 * time.msec)
             gpio.put(led_pin, 0)
         end
-        time.sleep_ms(990)
+        time.sleep_for(990 * time.msec)
     end
 end

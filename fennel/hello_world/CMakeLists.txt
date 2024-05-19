@@ -3,7 +3,7 @@
 
 mlua_add_fnl_modules(mod_fennel_hello_world hello_world.fnl)
 target_link_libraries(mod_fennel_hello_world INTERFACE
-    mlua_mod_pico.time
+    mlua_mod_mlua.time
 )
 
 mlua_add_executable(fennel_hello_world)

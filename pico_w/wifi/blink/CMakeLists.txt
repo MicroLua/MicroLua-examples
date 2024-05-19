@@ -3,9 +3,9 @@
 
 mlua_add_lua_modules(mod_picow_blink picow_blink.lua)
 target_link_libraries(mod_picow_blink INTERFACE
+    mlua_mod_mlua.time
     mlua_mod_pico
     mlua_mod_pico.cyw43
-    mlua_mod_pico.time
 )
 
 mlua_add_executable(picow_blink)

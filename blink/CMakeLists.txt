@@ -4,8 +4,8 @@
 mlua_add_lua_modules(mod_blink blink.lua)
 target_link_libraries(mod_blink INTERFACE
     mlua_mod_hardware.gpio
+    mlua_mod_mlua.time
     mlua_mod_pico
-    mlua_mod_pico.time
 )
 
 mlua_add_executable(blink)

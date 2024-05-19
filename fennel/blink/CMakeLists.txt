@@ -4,8 +4,8 @@
 mlua_add_fnl_modules(mod_fennel_blink blink.fnl)
 target_link_libraries(mod_fennel_blink INTERFACE
     mlua_mod_hardware.gpio
+    mlua_mod_mlua.time
     mlua_mod_pico
-    mlua_mod_pico.time
 )
 
 mlua_add_executable(fennel_blink)

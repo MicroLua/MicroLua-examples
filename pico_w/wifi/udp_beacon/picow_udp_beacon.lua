@@ -17,7 +17,7 @@ local udp = require 'pico.lwip.udp'
 local UDP_PORT = 4444
 local BEACON_MSG_LEN_MAX = 127
 local BEACON_TARGET = "255.255.255.255"
-local BEACON_INTERVAL = 1000 * time.ms
+local BEACON_INTERVAL = 1000 * time.msec
 
 local function run_udp_beacon()
     local pcb<close> = udp.new()

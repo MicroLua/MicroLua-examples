@@ -3,9 +3,9 @@
 
 (global _ENV (module ...))
 
-(local time (require :pico.time))
+(local time (require :mlua.time))
 
 (global main (fn []
   (while true
     (print "Hello, world!")
-    (time.sleep_ms 1000))))
+    (time.sleep_for time.sec))))
