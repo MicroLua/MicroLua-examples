@@ -40,18 +40,12 @@ local function run_udp_beacon()
 end
 
 function main()
-    if not (cyw43.init() and lwip.init()) then
-        io.printf("Failed to initialize\n")
-        return 1
-    end
+    if not (cyw43.init() and lwip.init()) then error("failed to initialize") end
     wifi.set_up(cyw43.ITF_STA, true, cyw43.COUNTRY_WORLDWIDE)
     io.printf("Connecting to Wi-Fi...\n")
     local ok, msg = util.wifi_connect(config.WIFI_SSID, config.WIFI_PASSWORD,
                                       cyw43.AUTH_WPA2_AES_PSK, 30 * time.sec)
-    if not ok then
-        io.printf("Failed to connect: %s\n", msg)
-        return 1
-    end
+    if not ok then error(("failed to connect: %s"):format(msg)) end
     io.printf("Connected\n")
     run_udp_beacon()
 end
