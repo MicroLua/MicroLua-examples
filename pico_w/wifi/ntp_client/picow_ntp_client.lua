@@ -25,7 +25,7 @@ local NTP_DELTA = -2085978496  -- Seconds between 1900-01-01 and 1970-01-01
 local function request(pcb, addr)
     local p<close> = pbuf.alloc(pbuf.TRANSPORT, NTP_MSG_LEN)
     mem.fill(p)
-    mem.write(p, '\x1b')  -- version: 3, mode: client
+    mem.set(p, 0, 0x1b)  -- version: 3, mode: client
     pcb:sendto(p, addr, NTP_PORT)
 end
 
@@ -34,9 +34,9 @@ local function receive(pcb, addr, deadline)
         local p<close>, saddr, port = pcb:recv(deadline)
         if not p then return io.printf("Receive timeout\n") end
         if saddr == addr and port == NTP_PORT and #p == NTP_MSG_LEN then
-            local mode, stratum = p:get(0, 2)
+            local mode, stratum = mem.get(p, 0, 2)
             if mode & 0x3f == 0x1c and stratum ~= 0 then
-                local txts = ('>I4'):unpack(p:read(40, 4))
+                local txts = ('>I4'):unpack(mem.read(p, 40, 4))
                 -- TODO: The following line will break on 2036-02-07, when NTP
                 --       timestamps roll over.
                 local utc = os.date('!*t', (txts - NTP_DELTA) & 0x7fffffff)
@@ -54,7 +54,8 @@ local function run_ntp_test()
     local pcb<close> = udp.new(nil, 4)
     if not pcb then error("failed to create pcb") end
     while true do
-        local addr, err = dns.gethostbyname(NTP_SERVER, nil, 5 * time.sec)
+        local addr, err = dns.gethostbyname(NTP_SERVER, nil,
+                                            time.deadline(5 * time.sec))
         if addr then
             io.printf("NTP server address: %s\n", addr)
             request(pcb, addr)
