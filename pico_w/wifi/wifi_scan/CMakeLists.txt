@@ -7,6 +7,7 @@ target_link_libraries(mod_picow_wifi_scan INTERFACE
     mlua_mod_mlua.time
     mlua_mod_pico.cyw43
     mlua_mod_pico.cyw43.wifi
+    mlua_mod_string
 )
 
 mlua_add_executable(picow_wifi_scan)
