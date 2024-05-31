@@ -16,7 +16,6 @@ target_compile_definitions(fennel_blink PRIVATE
 )
 target_link_libraries(fennel_blink PRIVATE
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     mod_fennel_blink
     pico_stdlib

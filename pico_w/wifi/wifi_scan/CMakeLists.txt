@@ -19,7 +19,6 @@ target_compile_definitions(picow_wifi_scan PRIVATE
 target_link_libraries(picow_wifi_scan PRIVATE
     mod_picow_wifi_scan
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     pico_stdlib
 )

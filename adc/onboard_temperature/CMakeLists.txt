@@ -18,7 +18,6 @@ target_compile_definitions(onboard_temperature PRIVATE
 )
 target_link_libraries(onboard_temperature PRIVATE
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     mod_adc_onboard_temperature
     pico_stdlib
@@ -44,7 +43,6 @@ target_compile_definitions(onboard_temperature_irq PRIVATE
 target_link_libraries(onboard_temperature_irq PRIVATE
     mlua_mod_mlua.stdio
     mlua_mod_mlua.thread
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     mod_adc_onboard_temperature_irq
     pico_stdlib

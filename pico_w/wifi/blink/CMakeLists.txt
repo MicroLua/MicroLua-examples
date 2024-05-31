@@ -17,7 +17,6 @@ target_compile_definitions(picow_blink PRIVATE
 target_link_libraries(picow_blink PRIVATE
     mod_picow_blink
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     pico_stdlib
 )

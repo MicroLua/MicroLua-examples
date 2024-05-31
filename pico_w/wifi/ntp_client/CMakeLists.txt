@@ -31,7 +31,6 @@ mlua_target_config(picow_ntp_client
 target_link_libraries(picow_ntp_client PRIVATE
     mod_picow_ntp_client
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     pico_stdlib
 )

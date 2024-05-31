@@ -14,7 +14,6 @@ target_compile_definitions(fennel_hello_world PRIVATE
 )
 target_link_libraries(fennel_hello_world PRIVATE
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     mod_fennel_hello_world
     pico_stdlib

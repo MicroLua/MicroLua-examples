@@ -28,7 +28,6 @@ mlua_target_config(picow_udp_beacon
 target_link_libraries(picow_udp_beacon PRIVATE
     mod_picow_udp_beacon
     mlua_mod_mlua.stdio
-    mlua_mod_pico.stdio
     mlua_mod_pico.stdio.usb
     pico_stdlib
 )
