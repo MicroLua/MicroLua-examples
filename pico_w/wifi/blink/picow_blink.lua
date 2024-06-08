@@ -8,10 +8,8 @@ local pico = require 'pico'
 local cyw43 = require 'pico.cyw43'
 
 function main()
-    if not cyw43.init() then
-        print("Wi-Fi init failed")
-        return
-    end
+    if not cyw43.init() then error("failed to initialize CYW43") end
+    local cyw43_done<close> = cyw43.deinit
     local pin = pico.CYW43_WL_GPIO_LED_PIN
     while true do
         cyw43.gpio_set(pin, 1)

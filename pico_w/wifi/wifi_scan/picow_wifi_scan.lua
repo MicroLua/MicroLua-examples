@@ -16,7 +16,8 @@ local function escape(s)
 end
 
 function main()
-    if not cyw43.init() then error("failed to initialize") end
+    if not cyw43.init() then error("failed to initialize CYW43") end
+    local cyw43_done<close> = cyw43.deinit
     wifi.set_up(cyw43.ITF_STA, true, cyw43.COUNTRY_WORLDWIDE)
     while true do
         io.printf("\nStarting Wi-Fi scan\n")

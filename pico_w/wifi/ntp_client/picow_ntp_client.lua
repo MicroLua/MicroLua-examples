@@ -70,7 +70,10 @@ local function run_ntp_test()
 end
 
 function main()
-    if not (cyw43.init() and lwip.init()) then error("failed to initialize") end
+    if not cyw43.init() then error("failed to initialize CYW43") end
+    local cyw43_done<close> = cyw43.deinit
+    if not lwip.init() then error("failed to initialize lwIP") end
+    local lwip_done<close> = lwip.deinit
     wifi.set_up(cyw43.ITF_STA, true, cyw43.COUNTRY_WORLDWIDE)
     io.printf("Connecting to Wi-Fi...\n")
     local ok, msg = util.wifi_connect(config.WIFI_SSID, config.WIFI_PASSWORD,
