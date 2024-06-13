@@ -12,7 +12,11 @@ set(CMAKE_CXX_STANDARD 17)
 mlua_init()
 
 add_compile_definitions(
-    MLUA_LOG_MAIN_ERRORS=1
+    MLUA_MAIN_SHUTDOWN=1
+    MLUA_MAIN_TRACEBACK=1
+    PICO_ENTER_USB_BOOT_ON_EXIT=1
+    PICO_STACK_SIZE=0x1000
+    PICO_USE_STACK_GUARDS=1
 )
 
 add_subdirectory(adc)
