@@ -1,6 +1,8 @@
 # Copyright 2024 Remy Blank <remy@c-space.org>
 # SPDX-License-Identifier: MIT
 
+check_vars(WIFI_SSID WIFI_PASSWORD)
+
 mlua_add_lua_modules(mod_picow_udp_beacon picow_udp_beacon.lua)
 target_link_libraries(mod_picow_udp_beacon INTERFACE
     mlua_mod_mlua.io
@@ -22,8 +24,8 @@ target_compile_definitions(picow_udp_beacon PRIVATE
     PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS=1000
 )
 mlua_target_config(picow_udp_beacon
-    WIFI_SSID:string="${WIFI_SSID}"
     WIFI_PASSWORD:string="${WIFI_PASSWORD}"
+    WIFI_SSID:string="${WIFI_SSID}"
 )
 target_link_libraries(picow_udp_beacon PRIVATE
     mod_picow_udp_beacon

@@ -11,6 +11,17 @@ set(CMAKE_CXX_STANDARD 17)
 
 mlua_init()
 
+macro(check_vars)
+    foreach(var ${ARGN})
+        if("${${var}}" STREQUAL "")
+            file(RELATIVE_PATH rel "${CMAKE_SOURCE_DIR}"
+                 "${CMAKE_CURRENT_SOURCE_DIR}")
+            message("Skipping ${rel}: ${var} isn't set")
+            return()
+        endif()
+    endforeach()
+endmacro()
+
 add_compile_definitions(
     MLUA_MAIN_SHUTDOWN=1
     MLUA_MAIN_TRACEBACK=1

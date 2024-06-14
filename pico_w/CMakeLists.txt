@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 if(NOT PICO_CYW43_SUPPORTED)
-    message("Not targeting pico_w, skipping pico_w/")
+    message("Skipping picow/*: not targeting pico_w")
 else()
     add_subdirectory(wifi)
 endif()
