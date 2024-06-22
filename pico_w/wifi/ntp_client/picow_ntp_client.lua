@@ -31,7 +31,7 @@ end
 
 local function receive(pcb, addr, deadline)
     while true do
-        local p<close>, saddr, port = pcb:recv(deadline)
+        local p<close>, saddr, port = pcb:recvfrom(deadline)
         if not p then return io.printf("Receive timeout\n") end
         if saddr == addr and port == NTP_PORT and #p == NTP_MSG_LEN then
             local mode, stratum = mem.get(p, 0, 2)

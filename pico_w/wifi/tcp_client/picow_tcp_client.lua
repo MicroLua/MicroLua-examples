@@ -40,8 +40,7 @@ function main()
     -- Connect to the server.
     local pcb<close> = lwip.assert(tcp.new())
     io.printf("Connecting to server\n")
-    local ok, err = lwip.assert(pcb:connect(addr, SERVER_PORT,
-                                            time.deadline(10 * time.sec)))
+    lwip.assert(pcb:connect(addr, SERVER_PORT, time.deadline(10 * time.sec)))
 
     -- Perform the test iterations.
     io.printf("Performing test\n");

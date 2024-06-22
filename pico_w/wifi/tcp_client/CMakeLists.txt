@@ -19,7 +19,6 @@ target_link_libraries(mod_picow_tcp_client INTERFACE
 mlua_add_executable(picow_tcp_client)
 target_compile_definitions(picow_tcp_client PRIVATE
     LWIP_DHCP=1
-    LWIP_UDP=1
     MLUA_MAIN_MODULE=picow_tcp_client
     MLUA_STDIO_INIT_USB=1
     PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS=1000
