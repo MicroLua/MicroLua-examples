@@ -5,14 +5,14 @@ check_vars(WIFI_SSID WIFI_PASSWORD TEST_SERVER)
 
 mlua_add_lua_modules(mod_picow_tcp_client picow_tcp_client.lua)
 target_link_libraries(mod_picow_tcp_client INTERFACE
+    mlua_mod_lwip
+    mlua_mod_lwip.dns
+    mlua_mod_lwip.tcp
     mlua_mod_mlua.io
     mlua_mod_mlua.time
     mlua_mod_pico.cyw43
     mlua_mod_pico.cyw43.util
     mlua_mod_pico.cyw43.wifi
-    mlua_mod_pico.lwip
-    mlua_mod_pico.lwip.dns
-    mlua_mod_pico.lwip.tcp
     mlua_mod_string
 )
 

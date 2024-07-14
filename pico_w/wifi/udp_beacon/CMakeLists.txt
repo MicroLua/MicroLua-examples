@@ -5,15 +5,15 @@ check_vars(WIFI_SSID WIFI_PASSWORD)
 
 mlua_add_lua_modules(mod_picow_udp_beacon picow_udp_beacon.lua)
 target_link_libraries(mod_picow_udp_beacon INTERFACE
+    mlua_mod_lwip
+    mlua_mod_lwip.pbuf
+    mlua_mod_lwip.udp
     mlua_mod_mlua.io
     mlua_mod_mlua.mem
     mlua_mod_mlua.time
     mlua_mod_pico.cyw43
     mlua_mod_pico.cyw43.util
     mlua_mod_pico.cyw43.wifi
-    mlua_mod_pico.lwip
-    mlua_mod_pico.lwip.pbuf
-    mlua_mod_pico.lwip.udp
 )
 
 mlua_add_executable(picow_udp_beacon)

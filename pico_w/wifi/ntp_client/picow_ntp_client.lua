@@ -3,6 +3,10 @@
 
 _ENV = module(...)
 
+local lwip = require 'lwip'
+local dns = require 'lwip.dns'
+local pbuf = require 'lwip.pbuf'
+local udp = require 'lwip.udp'
 local config = require 'mlua.config'
 local io = require 'mlua.io'
 local mem = require 'mlua.mem'
@@ -10,10 +14,6 @@ local time = require 'mlua.time'
 local cyw43 = require 'pico.cyw43'
 local util = require 'pico.cyw43.util'
 local wifi = require 'pico.cyw43.wifi'
-local lwip = require 'pico.lwip'
-local dns = require 'pico.lwip.dns'
-local pbuf = require 'pico.lwip.pbuf'
-local udp = require 'pico.lwip.udp'
 local os = require 'os'
 local string = require 'string'
 

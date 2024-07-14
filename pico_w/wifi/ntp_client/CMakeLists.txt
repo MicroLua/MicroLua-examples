@@ -5,16 +5,16 @@ check_vars(WIFI_SSID WIFI_PASSWORD)
 
 mlua_add_lua_modules(mod_picow_ntp_client picow_ntp_client.lua)
 target_link_libraries(mod_picow_ntp_client INTERFACE
+    mlua_mod_lwip
+    mlua_mod_lwip.dns
+    mlua_mod_lwip.pbuf
+    mlua_mod_lwip.udp
     mlua_mod_mlua.io
     mlua_mod_mlua.mem
     mlua_mod_mlua.time
     mlua_mod_pico.cyw43
     mlua_mod_pico.cyw43.util
     mlua_mod_pico.cyw43.wifi
-    mlua_mod_pico.lwip
-    mlua_mod_pico.lwip.dns
-    mlua_mod_pico.lwip.pbuf
-    mlua_mod_pico.lwip.udp
     mlua_mod_os
     mlua_mod_string
 )

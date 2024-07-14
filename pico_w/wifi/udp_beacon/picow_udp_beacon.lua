@@ -3,6 +3,9 @@
 
 _ENV = module(...)
 
+local lwip = require 'lwip'
+local pbuf = require 'lwip.pbuf'
+local udp = require 'lwip.udp'
 local config = require 'mlua.config'
 local io = require 'mlua.io'
 local mem = require 'mlua.mem'
@@ -10,9 +13,6 @@ local time = require 'mlua.time'
 local cyw43 = require 'pico.cyw43'
 local util = require 'pico.cyw43.util'
 local wifi = require 'pico.cyw43.wifi'
-local lwip = require 'pico.lwip'
-local pbuf = require 'pico.lwip.pbuf'
-local udp = require 'pico.lwip.udp'
 
 local UDP_PORT = 4444
 local BEACON_MSG_LEN_MAX = 127
