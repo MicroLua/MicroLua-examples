@@ -46,8 +46,9 @@ function main()
     local lwip_done<close> = lwip.deinit
     wifi.set_up(cyw43.ITF_STA, true, cyw43.COUNTRY_WORLDWIDE)
     io.printf("Connecting to Wi-Fi...\n")
-    local ok, msg = util.wifi_connect(config.WIFI_SSID, config.WIFI_PASSWORD,
-                                      cyw43.AUTH_WPA2_AES_PSK, 30 * time.sec)
+    local ok, msg = util.wifi_connect(
+        config.WIFI_SSID, config.WIFI_PASSWORD, cyw43.AUTH_WPA2_AES_PSK,
+        time.deadline(30 * time.sec))
     if not ok then error(("failed to connect: %s"):format(msg)) end
     io.printf("Connected\n")
     run_udp_beacon()
