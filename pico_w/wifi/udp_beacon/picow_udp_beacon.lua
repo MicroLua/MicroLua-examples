@@ -20,7 +20,7 @@ local BEACON_TARGET = "255.255.255.255"
 local BEACON_INTERVAL = 1000 * time.msec
 
 local function run_udp_beacon()
-    local pcb<close> = udp.new()
+    local pcb<close> = udp.new(nil, 0)
     local addr = lwip.ipaddr_aton(BEACON_TARGET)
     local counter = 0
     while true do
