@@ -1,8 +1,6 @@
 -- Copyright 2023 Remy Blank <remy@c-space.org>
 -- SPDX-License-Identifier: MIT
 
-_ENV = module(...)
-
 local adc = require 'hardware.adc'
 local gpio = require 'hardware.gpio'
 local time = require 'mlua.time'

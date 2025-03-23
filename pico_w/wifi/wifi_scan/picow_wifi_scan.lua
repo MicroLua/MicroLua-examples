@@ -1,8 +1,6 @@
 -- Copyright 2024 Remy Blank <remy@c-space.org>
 -- SPDX-License-Identifier: MIT
 
-_ENV = module(...)
-
 local io = require 'mlua.io'
 local time = require 'mlua.time'
 local cyw43 = require 'pico.cyw43'
